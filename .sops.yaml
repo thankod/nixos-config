@@ -1,0 +1,7 @@
+keys:
+  - &thankod_mimo age172q39dm8sdqtwp4g96cndweudwthn9s5up2kcty4xestdsdp4ulsww4kt2
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+      - age:
+        - *thankod_mimo
