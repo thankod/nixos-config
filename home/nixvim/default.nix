@@ -13,6 +13,7 @@
     opts = {
       relativenumber = true;
       number = true;
+      clipboard = "unnamedplus";
       mouse = "a";
     };
 
@@ -30,10 +31,12 @@
           };
         };
       };
+
       lsp.enable = true;
       lspconfig.enable = true;
       lsp-format.enable = true;
       nix.enable = true;
+
       none-ls = {
         enable = true;
         sources = {

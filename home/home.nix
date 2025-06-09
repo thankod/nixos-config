@@ -25,6 +25,8 @@
 
     which
 
+    nix-output-monitor
+
     lsof
     btop
     htop
@@ -37,6 +39,11 @@
 
     sops
     age
+
+    cargo
+    rustc
+
+    sbcl
   ];
 
   home.stateVersion = "25.05";
@@ -49,6 +56,11 @@
       enable = true;
       userEmail = "thankoder@gmail.com";
       userName = "thankod";
+    };
+
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
     };
 
     zsh = {
@@ -69,10 +81,11 @@
           "prompt"
         ];
         prompt.theme = "skwp";
-        extraConfig = "zstyle ':prezto:module:history-substring-search' unique 'yes'";
+        extraConfig =
+          "zstyle ':prezto:module:history-substring-search' unique 'yes'";
       };
       shellAliases = {
-        update = "sudo nixos-rebuild switch --flake ~/NixOS";
+        update = "sudo nixos-rebuild switch --flake ~/NixOS |& nom";
         nixsystem = "nvim ~/NixOS/system";
         nixhome = "nvim ~/NixOS/home";
         lazygit = "LANG=zh_CN LC_ALL=zh_CN lazygit";
