@@ -5,7 +5,6 @@
 
   home.username = "thankod";
   home.homeDirectory = "/home/thankod";
-
   home.packages = with pkgs; [
     zip
     xz
@@ -51,6 +50,12 @@
   programs = { home-manager.enable = true; };
 
   programs = {
+
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
 
     git = {
       enable = true;

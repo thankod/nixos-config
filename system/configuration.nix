@@ -24,7 +24,8 @@
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "input" ];
     shell = pkgs.zsh;
 
-    hashedPassword = "$y$j9T$dQPEdcWo8hmt7Pa3Dl4YJ/$wzHepC3TzBIzmpw1sm/tV7nyOx9ooBAKGUqu875IzNB";
+    hashedPassword =
+      "$y$j9T$dQPEdcWo8hmt7Pa3Dl4YJ/$wzHepC3TzBIzmpw1sm/tV7nyOx9ooBAKGUqu875IzNB";
     packages = with pkgs; [ tree ];
   };
 
@@ -40,10 +41,10 @@
   environment.variables.EDITOR = "nvim";
 
   #sops = {
-    #age.keyFile = "/home/thankod/.config/sops/age/keys.txt";
-    #defaultSopsFile = ./secrets.yaml;
-    #defaultSymlinkPath = "/run/user/1000/secrets";
-    #defaultSecretsMountPoint = "/run/user/1000/secrets.d";
+  #age.keyFile = "/home/thankod/.config/sops/age/keys.txt";
+  #defaultSopsFile = ./secrets.yaml;
+  #defaultSymlinkPath = "/run/user/1000/secrets";
+  #defaultSecretsMountPoint = "/run/user/1000/secrets.d";
   #};
 
   system.stateVersion = "24.11"; # Did you read the comment?

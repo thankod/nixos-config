@@ -1,9 +1,5 @@
-{ pkgs, inputs, config, lib, ... }:
-{
-  imports = [
-    ./completion.nix
-    inputs.nixvim.homeManagerModules.nixvim
-  ];
+{ pkgs, inputs, config, lib, ... }: {
+  imports = [ ./completion.nix inputs.nixvim.homeManagerModules.nixvim ];
 
   programs.nixvim = {
     enable = true;
@@ -24,9 +20,7 @@
       oil = {
         enable = true;
         settings = {
-          view_options = {
-            show_hidden = true;
-          };
+          view_options = { show_hidden = true; };
           preview = {
             border = "rounded";
             win_options.winblend = 1;
@@ -56,17 +50,11 @@
       none-ls = {
         enable = true;
         enableLspFormat = true;
-        sources = {
-          formatting = {
-            nixfmt.enable = true;
-          };
-        };
+        sources = { formatting = { nixfmt.enable = true; }; };
       };
-
 
       direnv.enable = true;
 
-      
       diffview.enable = true;
       gitmessenger = {
         enable = true;
