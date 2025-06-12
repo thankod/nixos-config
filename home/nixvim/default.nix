@@ -32,10 +32,12 @@
         enable = true;
         keymaps = {
           lspBuf = {
-            gd = {
-              action = "definition";
-              desc = "Go to definition";
-            };
+            gd = { action = "definition"; };
+            gD = { action = "references"; };
+            gt = { action = "type_definition"; };
+            gi = { action = "implementation"; };
+            K = { action = "hover"; };
+            re = { action = "rename"; };
           };
         };
         servers = {
