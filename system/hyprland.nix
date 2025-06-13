@@ -23,7 +23,6 @@
     waybar
     wlogout
     hyprshade
-    kitty
   ];
 
 }

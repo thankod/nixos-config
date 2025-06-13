@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ ./nixvim ];
+  imports = [ ./nixvim ./kitty.nix ];
 
   home.username = "thankod";
   home.homeDirectory = "/home/thankod";
@@ -17,6 +17,12 @@
     ncdu
     gdu
 
+    tldr
+    fd
+    bat
+    eza
+    ripgrep
+
     lazygit
 
     cowsay
@@ -25,6 +31,7 @@
     which
 
     nix-output-monitor
+    nvd
 
     lsof
     btop
@@ -90,10 +97,14 @@
           "zstyle ':prezto:module:history-substring-search' unique 'yes'";
       };
       shellAliases = {
-        update = "sudo nixos-rebuild switch --flake ~/NixOS |& nom";
+        update = "sudo nixos-rebuild switch --flake ~/NixOS |& nom && diffnew";
         nixsystem = "nvim ~/NixOS/system";
         nixhome = "nvim ~/NixOS/home";
         lazygit = "LANG=zh_CN LC_ALL=zh_CN lazygit";
+        ls = "exa";
+        cat = "bat";
+        diffnew = "nvd diff $(command ls -dv /nix/var/nix/profiles/system-*-link | tail -2)";
+        difflist = "nix profile diff-closures --profile /nix/var/nix/profiles/system";
       };
     };
   };
