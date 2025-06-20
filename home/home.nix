@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ ./nixvim ./kitty.nix ];
+  imports = [ ./nixvim ./kitty.nix ./catppuccin.nix ];
 
   home.username = "thankod";
   home.homeDirectory = "/home/thankod";
@@ -22,6 +22,7 @@
     bat
     eza
     ripgrep
+    fzf
 
     lazygit
 
@@ -48,6 +49,7 @@
 
     cargo
     rustc
+    crates-tui
 
     sbcl
   ];
@@ -103,8 +105,10 @@
         lazygit = "LANG=zh_CN LC_ALL=zh_CN lazygit";
         ls = "exa";
         cat = "bat";
-        diffnew = "nvd diff $(command ls -dv /nix/var/nix/profiles/system-*-link | tail -2)";
-        difflist = "nix profile diff-closures --profile /nix/var/nix/profiles/system";
+        diffnew =
+          "nvd diff $(command ls -dv /nix/var/nix/profiles/system-*-link | tail -2)";
+        difflist =
+          "nix profile diff-closures --profile /nix/var/nix/profiles/system";
       };
     };
   };

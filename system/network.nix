@@ -5,7 +5,7 @@
 
     hostName = "mimo";
     networkmanager.enable = true;
-
+    enableIPv6 = true;
     proxy.default = "http://192.168.1.15:7890";
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     nameservers = [

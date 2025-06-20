@@ -1,12 +1,26 @@
 { pkgs, inputs, config, lib, ... }: {
-  imports = [ ./completion.nix inputs.nixvim.homeManagerModules.nixvim ];
+  imports = [
+    ./completion.nix
+    ./tree.nix
+    ./lsp.nix
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
 
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.gruvbox.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      settings = {
+        integrations = {
+          cmp = true;
+          gitsigns = true;
+        };
+        flavour = "macchiato";
+      };
+    };
     opts = {
       relativenumber = true;
       number = true;
@@ -28,25 +42,6 @@
         };
       };
 
-      lsp = {
-        enable = true;
-        keymaps = {
-          lspBuf = {
-            gd = { action = "definition"; };
-            gD = { action = "references"; };
-            gt = { action = "type_definition"; };
-            gi = { action = "implementation"; };
-            K = { action = "hover"; };
-            re = { action = "rename"; };
-          };
-        };
-        servers = {
-          rust_analyzer.enable = true;
-          nixd.enable = true;
-        };
-      };
-      lspconfig.enable = true;
-      lsp-format.enable = true;
       nix.enable = true;
 
       none-ls = {
@@ -78,6 +73,17 @@
             enable = true;
             backend = "nui";
           };
+        };
+      };
+      bufferline = {
+        enable = true;
+        settings.options = {
+          offsets = [{
+            filetype = "neo-tree";
+            highlight = "Directory";
+            text = "FileExplorer";
+            text_align = "center";
+          }];
         };
       };
 
