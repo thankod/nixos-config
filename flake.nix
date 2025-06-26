@@ -5,7 +5,6 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
-    catppuccin.url = "github:catppuccin/nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,7 +24,7 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, nixvim, sops-nix, catppuccin, ... }@inputs: {
+    { self, nixpkgs, home-manager, nixvim, sops-nix, ... }@inputs: {
       nixosConfigurations = {
         mimo = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -34,14 +33,13 @@
             ./system/configuration.nix
 
             home-manager.nixosModules.home-manager
-            catppuccin.nixosModules.catppuccin
+
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.sharedModules = [
                 sops-nix.homeManagerModules.sops
-                catppuccin.homeModules.catppuccin
               ];
 
               home-manager.users.thankod = import ./home/home.nix;
@@ -50,5 +48,22 @@
           ];
         };
       };
+      homeConfigurations."thankod@mimo" =
+        home-manager.lib.homeManagerConfiguration rec {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ./homeManagerModules/hyprland/hyprland.nix
+            ./home.nix
+            nixvim.homeManagerModules.nixvim
+            {
+              wayland.windowManager.hyprland = {
+                package =
+                  inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+                portalPackage =
+                  inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+              };
+            }
+          ];
+        };
     };
 }

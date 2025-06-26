@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ ./nixvim ./kitty.nix ./catppuccin.nix ];
+  imports = [ ./nixvim ./kitty.nix ./hyprland ];
 
   home.username = "thankod";
   home.homeDirectory = "/home/thankod";
@@ -52,6 +52,10 @@
     crates-tui
 
     sbcl
+
+    ponysay
+    pokemonsay
+
   ];
 
   home.stateVersion = "25.05";
