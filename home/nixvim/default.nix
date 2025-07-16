@@ -3,6 +3,7 @@
     ./completion.nix
     ./tree.nix
     ./lsp.nix
+    ./telescope.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
@@ -11,6 +12,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    globals.mapleader = " ";
     colorschemes.catppuccin = {
       enable = true;
       settings = {
@@ -86,6 +88,7 @@
           }];
         };
       };
+      flash.enable = true;
 
     };
 
