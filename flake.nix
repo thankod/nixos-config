@@ -20,7 +20,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs =
@@ -52,7 +51,6 @@
         home-manager.lib.homeManagerConfiguration rec {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            ./homeManagerModules/hyprland/hyprland.nix
             ./home.nix
             nixvim.homeManagerModules.nixvim
             {

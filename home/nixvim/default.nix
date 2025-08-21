@@ -65,18 +65,7 @@
       };
 
       nvim-autopairs.enable = true;
-      noice = {
-        enable = true;
-        settings = {
-          enable = true;
-          notify.enable = true;
-          messages.enable = true;
-          popupmenu = {
-            enable = true;
-            backend = "nui";
-          };
-        };
-      };
+      wilder.enable = true;
       bufferline = {
         enable = true;
         settings.options = {

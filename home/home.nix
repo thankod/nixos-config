@@ -10,6 +10,7 @@
     xz
     unzip
     p7zip
+    gcc
 
     ranger
     yazi

@@ -36,6 +36,11 @@
     neovim.enable = true;
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [ vim wget neofetch git ];
   environment.variables.EDITOR = "nvim";
